@@ -14,10 +14,7 @@ public class FossilSelection : MonoBehaviour {
     Fossil initialFossilSelection;
 
     [SerializeField]
-    Fossil secondFossilSelection;
-
-    [SerializeField]
-    HighlightPointsOfInterest highlighter;
+    HighlightPointsOfInterest leftScreenHighlighter, rightScreenHighlighter;
 
 	// Use this for initialization
 	void Start () {
@@ -33,12 +30,6 @@ public class FossilSelection : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            leftScreenControl.SelectFossil(secondFossilSelection);
-            initialFossilSelection.Store();
-            secondFossilSelection.Setup(fossilLocation);
-            highlighter.SelectFossil(secondFossilSelection);
-        }
+
 	}
 }
