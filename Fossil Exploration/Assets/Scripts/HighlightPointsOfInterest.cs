@@ -27,8 +27,6 @@ public class HighlightPointsOfInterest : MonoBehaviour {
     [SerializeField]
     Camera cam;
 
-    bool testing = true;
-
     List<InfoText> currentInfoTexts = new List<InfoText>();
     List<PointOfInterestCircle> currentPOICircles = new List<PointOfInterestCircle>();
 
@@ -40,10 +38,6 @@ public class HighlightPointsOfInterest : MonoBehaviour {
     public void SelectFossil(Fossil fossil)
     {
         currentFossil = fossil;
-        if(currentFossil.PointsOfInterest.Length > 0)
-        {
-            testing = false;
-        }
 
         foreach(InfoText i in currentInfoTexts)
         {
@@ -80,9 +74,5 @@ public class HighlightPointsOfInterest : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (testing)
-        {
-            SelectFossil(currentFossil);
-        }
 	}
 }
