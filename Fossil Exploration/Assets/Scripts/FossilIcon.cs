@@ -16,9 +16,14 @@ public class FossilIcon : MonoBehaviour {
         rectTransform = GetComponent<RectTransform>();
         initialPosition = rectTransform.anchoredPosition;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    public void Init()
+    {
+        initialPosition = rectTransform.anchoredPosition;
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 
