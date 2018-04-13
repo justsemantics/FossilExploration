@@ -64,6 +64,7 @@ public class FossilSelection : MonoBehaviour {
                 if(icon != null)
                 {
                     activeIcons.Add(fingerId, icon);
+                    icon.Pickup();
                 }
             }
         }

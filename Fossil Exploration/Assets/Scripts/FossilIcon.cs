@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FossilIcon : MonoBehaviour {
 
@@ -11,8 +12,13 @@ public class FossilIcon : MonoBehaviour {
 
     Vector2 initialPosition;
 
+    FossilIcon spareIcon;
+
+    Image fossilImage;
+
     // Use this for initialization
     void Start () {
+        fossilImage = GetComponent<Image>();
         rectTransform = GetComponent<RectTransform>();
         initialPosition = rectTransform.anchoredPosition;
 	}
@@ -39,8 +45,40 @@ public class FossilIcon : MonoBehaviour {
         return rectTransform.anchoredPosition + halfScreen;
     }
 
-    public void Return()
+    public void Return(bool lerp = false)
     {
         rectTransform.anchoredPosition = initialPosition;
+        Destroy(spareIcon.gameObject);
+    }
+
+    public void Pickup()
+    {
+        if(spareIcon == null)
+        {
+            spareIcon = Instantiate(this);
+
+            spareIcon.FadeIn();
+        }
+    }
+
+    public void FadeIn()
+    {
+        StartCoroutine(fadeInAfterSeconds(1, 1));
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(spareIcon.gameObject);
+    }
+
+    IEnumerator fadeInAfterSeconds(float time, float fadeTime)
+    {
+        fossilImage.color = Color.clear;
+        float startTime = Time.time;
+        while(Time.time - startTime < time)
+        {
+            yield return null;
+        }
+        fossilImage.color = Color.white;
     }
 }
