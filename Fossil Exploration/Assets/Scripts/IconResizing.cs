@@ -82,6 +82,10 @@ public class IconResizing : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Place icons in a regularly spaced circle
+    /// </summary>
+    /// <param name="icons"></param>
     void PositionAndSizeIcons(RectTransform[] icons)
     {
         int num = icons.Length;

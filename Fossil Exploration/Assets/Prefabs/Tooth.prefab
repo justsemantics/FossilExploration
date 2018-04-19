@@ -199,17 +199,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   header: Top of Tooth
-  content: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Suspendisse sed nisi lacus
-    sed viverra tellus in. Diam sollicitudin tempor id eu nisl nunc mi ipsum. Sit
-    amet facilisis magna etiam tempor orci eu lobortis. Mi in nulla posuere sollicitudin
-    aliquam ultrices sagittis orci a. Congue mauris rhoncus aenean vel. Eget duis
-    at tellus at. Eu non diam phasellus vestibulum lorem sed risus ultricies. Libero
-    volutpat sed cras ornare arcu dui. Nibh tellus molestie nunc non blandit. Iaculis
-    eu non diam phasellus vestibulum. Elementum pulvinar etiam non quam lacus suspendisse
-    faucibus interdum. Habitant morbi tristique senectus et netus et malesuada fames
-    ac. Elementum tempus egestas sed sed risus pretium quam vulputate. Pellentesque
-    sit amet porttitor eget dolor morbi non arcu.
+  content: This part looks like it was burnt, but probably actually wasn't. Pretend
+    it's the surface of the moon.
+  infoPanelLocation: {x: 50, y: 200}
   Info: {fileID: 0}
   Rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &114780240448108884
@@ -237,12 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   header: Center of Tooth
-  content: Rhoncus dolor purus non enim praesent elementum. Mauris commodo quis imperdiet
-    massa. Hac habitasse platea dictumst quisque. Id porta nibh venenatis cras sed.
-    Aliquam eleifend mi in nulla. Cras pulvinar mattis nunc sed blandit libero. Dignissim
-    enim sit amet venenatis urna cursus eget. Phasellus faucibus scelerisque eleifend
-    donec pretium vulputate sapien nec sagittis. Amet est placerat in egestas erat
-    imperdiet sed. Amet consectetur adipiscing elit ut aliquam purus. In egestas erat
-    imperdiet sed euismod nisi.
+  content: Not much to say about this. It's got grooves in it, for a reason.
+  infoPanelLocation: {x: 261, y: 439}
   Info: {fileID: 0}
   Rotation: {x: 0, y: 0, z: 0, w: 0}

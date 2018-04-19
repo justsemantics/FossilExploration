@@ -36,6 +36,9 @@ public class HighlightPointsOfInterest : MonoBehaviour {
 	void Start () {
 	}
 
+    /// <summary>
+    /// Makes sure that Refresh is only called after the new Fossil is done being set up
+    /// </summary>
     void LateUpdate()
     {
         if (shouldRefresh)
@@ -44,6 +47,9 @@ public class HighlightPointsOfInterest : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Deletes old InfoTexts and PointOfInterestCircles and makes new ones based on the currentFossil
+    /// </summary>
     void Refresh()
     {
         foreach (InfoText i in currentInfoTexts)
@@ -66,6 +72,7 @@ public class HighlightPointsOfInterest : MonoBehaviour {
             i.ContentTextString = POI.Content;
             i.POI = POI;
             i.positionController = touchRotate;
+            i.Position = POI.InfoPanelLocation;
 
             currentInfoTexts.Add(i);
 
