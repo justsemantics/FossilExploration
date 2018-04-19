@@ -65,7 +65,7 @@ public class InfoText : MonoBehaviour, IPointerDownHandler {
             if(open == true)
             {
                 //close all other InfoTexts
-                foreach(InfoText t in FindObjectsOfType<InfoText>())
+                foreach(InfoText t in transform.parent.gameObject.GetComponentsInChildren<InfoText>())
                 {
                     if( t != this)
                     {
