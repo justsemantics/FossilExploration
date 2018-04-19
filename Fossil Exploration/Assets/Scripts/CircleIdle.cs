@@ -42,7 +42,7 @@ public class CircleIdle : MonoBehaviour {
             float size = Mathf.Lerp(minSize, maxSize, t);
 
             Color minColor = Color.white;
-            Color maxColor = Color.clear;
+            Color maxColor = new Color(1, 1, 1, 0);
             Color color = Color.Lerp(minColor, maxColor, t);
 
             innerImage.sizeDelta = new Vector2(size, size);

@@ -64,11 +64,11 @@ public class InputStateManager : MonoBehaviour
 
     private touchType DetermineTouchType(Touch t)
     {
-        if(t.position.x < Screen.width * 0.4)
+        if(t.position.x < Screen.width * 0.375)
         {
             return touchType.left;
         }
-        else if(t.position.x > Screen.width * 0.6)
+        else if(t.position.x > Screen.width * 0.625)
         {
             return touchType.right;
         }

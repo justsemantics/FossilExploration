@@ -30,22 +30,29 @@ public class HighlightPointsOfInterest : MonoBehaviour {
     List<InfoText> currentInfoTexts = new List<InfoText>();
     List<PointOfInterestCircle> currentPOICircles = new List<PointOfInterestCircle>();
 
+    bool shouldRefresh = false;
+
 	// Use this for initialization
 	void Start () {
-       
 	}
 
-    public void SelectFossil(Fossil fossil)
+    void LateUpdate()
     {
-        currentFossil = fossil;
+        if (shouldRefresh)
+        {
+            Refresh();
+        }
+    }
 
-        foreach(InfoText i in currentInfoTexts)
+    void Refresh()
+    {
+        foreach (InfoText i in currentInfoTexts)
         {
             Destroy(i.gameObject);
         }
         currentInfoTexts.Clear();
 
-        foreach(PointOfInterestCircle c in currentPOICircles)
+        foreach (PointOfInterestCircle c in currentPOICircles)
         {
             Destroy(c.gameObject);
         }
@@ -70,6 +77,15 @@ public class HighlightPointsOfInterest : MonoBehaviour {
 
             currentPOICircles.Add(c);
         }
+
+        shouldRefresh = false;
+    }
+
+    public void SelectFossil(Fossil fossil)
+    {
+        currentFossil = fossil;
+        shouldRefresh = true;
+        
     }
 	
 	// Update is called once per frame

@@ -96,11 +96,13 @@ public class FossilSelection : MonoBehaviour {
         {
             leftScreenControl.SelectFossil(newFossil);
             newFossil.Setup(leftScreenFossilLocation);
+            leftScreenHighlighter.SelectFossil(newFossil);
         }
         else
         {
             rightScreenControl.SelectFossil(newFossil);
             newFossil.Setup(rightScreenFossilLocation);
+            rightScreenHighlighter.SelectFossil(newFossil);
         }
     }
 }
