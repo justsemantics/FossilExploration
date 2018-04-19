@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class IconResizing : MonoBehaviour {
 
     [SerializeField]
-    RectTransform[] upperFossilImages, lowerFossilImages;
+    RectTransform[] fossilIconBGImages, fossilIconFGImages;
 
     [SerializeField]
     FossilIcon[] fossilIcons;
@@ -24,12 +24,14 @@ public class IconResizing : MonoBehaviour {
     [SerializeField]
     GraphicRaycaster raycaster;
 
-    int size = 300;
-    int position = 100;
+    int size = 200;
+    int position = 110;
 
 	// Use this for initialization
 	void Start () {
         touchManager.OnTouchAdded += TouchAdded;
+
+        UpdateIcons();
 	}
 	
 	// Update is called once per frame
@@ -70,20 +72,29 @@ public class IconResizing : MonoBehaviour {
 
     void UpdateIcons()
     {
-        foreach(RectTransform t in upperFossilImages)
-        {
-            t.anchoredPosition = new Vector2(0, position);
-            t.sizeDelta = new Vector2(size, size);
-        }
-        foreach(RectTransform t in lowerFossilImages)
-        {
-            t.anchoredPosition = new Vector2(0, -position);
-            t.sizeDelta = new Vector2(size, size);
-        }
+
+        PositionAndSizeIcons(fossilIconBGImages);
+        PositionAndSizeIcons(fossilIconFGImages);
 
         foreach(FossilIcon f in fossilIcons)
         {
             f.Init();
+        }
+    }
+
+    void PositionAndSizeIcons(RectTransform[] icons)
+    {
+        int num = icons.Length;
+        float angleIncrement = Mathf.PI * 2 / num;
+        float startAngle = Mathf.PI / 2;
+
+        for(int i = 0; i < num; i++)
+        {
+            float x = Mathf.Cos(startAngle + i * angleIncrement) * position;
+            float y = Mathf.Sin(startAngle + i * angleIncrement) * position;
+            icons[i].anchoredPosition = new Vector2(x, y);
+
+            icons[i].sizeDelta = new Vector2(size, size);
         }
     }
 }
