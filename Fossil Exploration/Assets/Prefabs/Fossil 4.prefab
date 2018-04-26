@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4299997448065868}
   - component: {fileID: 33705728534059810}
   - component: {fileID: 23667968552619324}
+  - component: {fileID: 64987332216033962}
   m_Layer: 0
   m_Name: fossil 4
   m_TagString: Untagged
@@ -50,13 +51,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1214163411893568}
-  m_LocalRotation: {x: 0.000000081460335, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.9912271, y: 0, z: 0, w: -0.13216983}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5.7170177, y: 5.7170167, z: 5.7170167}
   m_Children: []
   m_Father: {fileID: 4511160164610566}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -195.19, y: 0, z: 0}
 --- !u!4 &4511160164610566
 Transform:
   m_ObjectHideFlags: 1
@@ -64,7 +65,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1774674482582578}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -5.979491, y: -3.981865, z: 5.85542}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4299997448065868}
@@ -122,6 +123,20 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1214163411893568}
+  m_Mesh: {fileID: 4300000, guid: 924f102ed6b355e489eedec2a2da091e, type: 3}
+--- !u!64 &64987332216033962
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1214163411893568}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 924f102ed6b355e489eedec2a2da091e, type: 3}
 --- !u!114 &114627982239846110
 MonoBehaviour:

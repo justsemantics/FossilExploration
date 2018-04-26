@@ -37,7 +37,7 @@ public class PointOfInterestCircle : MonoBehaviour, IPointerClickHandler {
 
     public void Show()
     {
-        image.color = Color.red;
+        image.color = Color.white;
         rectTransform.sizeDelta = new Vector2(rectSize, rectSize);
     }
 

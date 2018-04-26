@@ -26,6 +26,14 @@ public class FossilSelection : MonoBehaviour {
     [SerializeField]
     GraphicRaycaster raycaster;
 
+    [SerializeField]
+    GameObject LeftReset, RightReset;
+
+    [SerializeField]
+    GameObject LeftText, RightText;
+
+    FossilIcon lastLeftIcon, lastRightIcon;
+
     Dictionary<int, FossilIcon> activeIcons = new Dictionary<int, FossilIcon>();
 
 	// Use this for initialization
@@ -50,23 +58,31 @@ public class FossilSelection : MonoBehaviour {
 
     void TouchAdded(int fingerId, touchType type)
     {
-        if(type == touchType.selection)
+        PointerEventData eventData = new PointerEventData(eventSystem);
+        eventData.position = touchManager.Touches[fingerId].touch.position;
+        List<RaycastResult> results = new List<RaycastResult>();
+        raycaster.Raycast(eventData, results);
+
+        foreach(RaycastResult result in results)
         {
-            PointerEventData eventData = new PointerEventData(eventSystem);
-            eventData.position = touchManager.Touches[fingerId].touch.position;
-            List<RaycastResult> results = new List<RaycastResult>();
-            raycaster.Raycast(eventData, results);
-
-            foreach(RaycastResult result in results)
+            if(result.gameObject == LeftReset)
             {
-                FossilIcon icon = result.gameObject.GetComponent<FossilIcon>();
-
-                if(icon != null)
-                {
-                    activeIcons.Add(fingerId, icon);
-                    icon.Pickup();
-                }
+                selectFossil(lastLeftIcon.fossil, true);
             }
+            if(result.gameObject == RightReset)
+            {
+                selectFossil(lastRightIcon.fossil, false);
+            }
+
+            FossilIcon icon = result.gameObject.GetComponent<FossilIcon>();
+
+            if(icon != null)
+            {
+                activeIcons.Add(fingerId, icon);
+                icon.Pickup();
+            }
+
+
         }
     }
 
@@ -77,10 +93,12 @@ public class FossilSelection : MonoBehaviour {
             if(activeIcons[fingerId].GetPosition().x < Screen.width * 0.4)
             {
                 selectFossil(activeIcons[fingerId].fossil, true);
+                lastLeftIcon = activeIcons[fingerId];
             }
             else if(activeIcons[fingerId].GetPosition().x > Screen.width * 0.6)
             {
                 selectFossil(activeIcons[fingerId].fossil, false);
+                lastRightIcon = activeIcons[fingerId];
             }
 
             activeIcons[fingerId].Return();
@@ -94,12 +112,14 @@ public class FossilSelection : MonoBehaviour {
         Fossil newFossil = Instantiate<Fossil>(fossil);
         if (leftScreen)
         {
+            LeftText.SetActive(false);
             leftScreenControl.SelectFossil(newFossil);
             newFossil.Setup(leftScreenFossilLocation);
             leftScreenHighlighter.SelectFossil(newFossil);
         }
         else
         {
+            RightText.SetActive(false);
             rightScreenControl.SelectFossil(newFossil);
             newFossil.Setup(rightScreenFossilLocation);
             rightScreenHighlighter.SelectFossil(newFossil);
