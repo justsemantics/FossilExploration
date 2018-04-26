@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -628,7 +628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a9f117530dbd1469e48d65e1f85f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fossil: {fileID: 114780240448108884, guid: 284883b417ee16b4198d3cc302323900, type: 2}
+  fossil: {fileID: 114559706605477356, guid: d03879b3d4747664285054299fd1af29, type: 2}
 --- !u!114 &539729770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1479,7 +1479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a9f117530dbd1469e48d65e1f85f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fossil: {fileID: 114780240448108884, guid: 284883b417ee16b4198d3cc302323900, type: 2}
+  fossil: {fileID: 114651034237767260, guid: cd01c528c7091124d9ce2e51bdc25706, type: 2}
 --- !u!114 &1155413725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1628,7 +1628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a9f117530dbd1469e48d65e1f85f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fossil: {fileID: 114780240448108884, guid: 284883b417ee16b4198d3cc302323900, type: 2}
+  fossil: {fileID: 114627982239846110, guid: 39e32f020c44b6f419cc3f92df36a574, type: 2}
 --- !u!114 &1285138997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2620,7 +2620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a9f117530dbd1469e48d65e1f85f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fossil: {fileID: 114780240448108884, guid: 284883b417ee16b4198d3cc302323900, type: 2}
+  fossil: {fileID: 114013556095076814, guid: c4d1c2d7e2bc3f34cb5aa5275a75c957, type: 2}
 --- !u!114 &1898042948
 MonoBehaviour:
   m_ObjectHideFlags: 0
