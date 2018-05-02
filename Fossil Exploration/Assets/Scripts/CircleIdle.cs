@@ -38,7 +38,7 @@ public class CircleIdle : MonoBehaviour {
             float t = animationCurve.Evaluate(progress);
 
             float minSize = outerImage.rect.width;
-            float maxSize = minSize + range;
+            float maxSize = minSize + minSize * range;
             float size = Mathf.Lerp(minSize, maxSize, t);
 
             Color minColor = Color.white;

@@ -24,8 +24,8 @@ public class IconResizing : MonoBehaviour {
     [SerializeField]
     GraphicRaycaster raycaster;
 
-    int size = 200;
-    int position = 110;
+    int size = 130;
+    int position = 140;
 
 	// Use this for initialization
 	void Start () {
