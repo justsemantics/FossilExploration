@@ -57,7 +57,12 @@ public class PointOfInterestCircle : MonoBehaviour, IPointerClickHandler {
 
     public void MoveTo(Vector2 position)
     {
-        rectTransform.anchoredPosition = position;
+        RectTransform parent = rectTransform.parent.GetComponent<RectTransform>();
+        float x = parent.anchorMin.x * Screen.width + parent.offsetMin.x;
+        float y = parent.anchorMin.y * Screen.height + parent.offsetMin.y;
+        Vector2 parentPosition = new Vector2(x, y);
+
+        rectTransform.anchoredPosition = position - parentPosition;
     }
 
     void AdjustSize(Vector3 normal, Vector3 comparison)

@@ -209,9 +209,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2666eae23afbbc24aa8ebc1f039745e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  header: 
-  content: 
-  infoPanelLocation: {x: 0, y: 0}
+  header: Base
+  content: This bit looks like it connects to other vertebrae. Imagine a long chain
+    of identical looking fossils.
+  infoPanelLocation: {x: 250, y: 300}
   Info: {fileID: 0}
   Rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &114651034237767260
@@ -238,8 +239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2666eae23afbbc24aa8ebc1f039745e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  header: 
-  content: 
-  infoPanelLocation: {x: 0, y: 0}
+  header: Fin
+  content: Muscles might grab on to this thin part for better torque, or maybe it
+    sticks out of the back like a weapon.
+  infoPanelLocation: {x: 50, y: 750}
   Info: {fileID: 0}
   Rotation: {x: 0, y: 0, z: 0, w: 0}
