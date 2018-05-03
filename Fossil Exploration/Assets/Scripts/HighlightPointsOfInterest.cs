@@ -7,38 +7,38 @@ using UnityEngine.UI;
 public class HighlightPointsOfInterest : MonoBehaviour {
 
     [SerializeField]
-    PointOfInterestCircle pointOfInterestCirclePrefab;
+    private PointOfInterestCircle pointOfInterestCirclePrefab;
 
     [SerializeField]
-    InfoText infoTextPrefab;
+    private InfoText infoTextPrefab;
 
-    Fossil currentFossil;
-
-    [SerializeField]
-    float sensitivity = 0.01f;
+    private Fossil currentFossil;
 
     [SerializeField]
-    RectTransform circlePanel, infoTextPanel;
+    private float sensitivity = 0.01f;
 
     [SerializeField]
-    TouchRotate touchRotate;
+    private RectTransform circlePanel, infoTextPanel;
 
     [SerializeField]
-    Camera cam;
+    private TouchRotate touchRotate;
 
-    List<InfoText> currentInfoTexts = new List<InfoText>();
-    List<PointOfInterestCircle> currentPOICircles = new List<PointOfInterestCircle>();
+    [SerializeField]
+    private Camera cam;
 
-    bool shouldRefresh = false;
+    private List<InfoText> currentInfoTexts = new List<InfoText>();
+    private List<PointOfInterestCircle> currentPOICircles = new List<PointOfInterestCircle>();
+
+    private bool shouldRefresh = false;
 
 	// Use this for initialization
-	void Start () {
+	private void Start () {
 	}
 
     /// <summary>
     /// Makes sure that Refresh is only called after the new Fossil is done being set up
     /// </summary>
-    void LateUpdate()
+    private void LateUpdate()
     {
         if (shouldRefresh)
         {
@@ -50,7 +50,7 @@ public class HighlightPointsOfInterest : MonoBehaviour {
     /// Don't call this directly. Instead, set the shouldRefresh flag and let LateUpdate handle it.
     /// Deletes old InfoTexts and PointOfInterestCircles and makes new ones based on the currentFossil.
     /// </summary>
-    void Refresh()
+    private void Refresh()
     {
         //Delete old stuff, clear out lists
         foreach (InfoText i in currentInfoTexts)
@@ -96,8 +96,4 @@ public class HighlightPointsOfInterest : MonoBehaviour {
         currentFossil = fossil;
         shouldRefresh = true;      
     }
-	
-	// Update is called once per frame
-	void Update () {
-	}
 }

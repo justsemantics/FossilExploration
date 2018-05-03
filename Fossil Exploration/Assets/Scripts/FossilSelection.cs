@@ -4,55 +4,66 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-
+/// <summary>
+/// Handles the process of selecting fossils,
+/// from dragging FossilIcons into the left or right screen
+/// to setting up connections between other scripts and new fossils
+/// </summary>
 public class FossilSelection : MonoBehaviour {
 
     [SerializeField]
-    TouchRotate leftScreenControl, rightScreenControl;
+    private TouchRotate leftScreenControl, rightScreenControl;
 
     [SerializeField]
-    Transform leftScreenFossilLocation, rightScreenFossilLocation;
+    private Transform leftScreenFossilLocation, rightScreenFossilLocation;
 
     [SerializeField]
-    Fossil leftScreenInitialFossilSelection, rightScreenInitialFossilSelection;
+    private HighlightPointsOfInterest leftScreenHighlighter, rightScreenHighlighter;
 
     [SerializeField]
-    HighlightPointsOfInterest leftScreenHighlighter, rightScreenHighlighter;
+    private InputStateManager touchManager;
 
     [SerializeField]
-    InputStateManager touchManager;
+    private EventSystem eventSystem;
 
     [SerializeField]
-    EventSystem eventSystem;
+    private GraphicRaycaster raycaster;
 
     [SerializeField]
-    GraphicRaycaster raycaster;
+    private GameObject LeftReset, RightReset;
 
     [SerializeField]
-    GameObject LeftReset, RightReset;
+    private GameObject LeftText, RightText;
 
-    [SerializeField]
-    GameObject LeftText, RightText;
+    private FossilIcon lastLeftIcon, lastRightIcon;
 
-    FossilIcon lastLeftIcon, lastRightIcon;
-
+    /// <summary>
+    /// Icons that are currently being dragged.
+    /// Key: fingerId,
+    /// Value: FossilIcon
+    /// </summary>
     Dictionary<int, FossilIcon> activeIcons = new Dictionary<int, FossilIcon>();
 
 	// Use this for initialization
-	void Start () {
+	private void Start () {
         touchManager.OnTouchAdded += TouchAdded;
         touchManager.OnTouchRemoved += TouchRemoved;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	private void Update () {
         foreach(KeyValuePair<int, FossilIcon> kvp in activeIcons)
         {
             kvp.Value.SetPosition(touchManager.Touches[kvp.Key].touch.position);
         }
 	}
 
-    void TouchAdded(int fingerId, touchType type)
+    /// <summary>
+    /// Handles the OnTouchAdded event from the InputStateManager.
+    /// </summary>
+    /// <param name="fingerId"></param>
+    /// <param name="type"></param>
+    private void TouchAdded(int fingerId, touchType type)
     {
         PointerEventData eventData = new PointerEventData(eventSystem);
         eventData.position = touchManager.Touches[fingerId].touch.position;
@@ -77,12 +88,14 @@ public class FossilSelection : MonoBehaviour {
                 activeIcons.Add(fingerId, icon);
                 icon.Pickup();
             }
-
-
         }
     }
 
-    void TouchRemoved(int fingerId)
+    /// <summary>
+    /// Handles the OnTouchRemoved event from the InputStateManager
+    /// </summary>
+    /// <param name="fingerId"></param>
+    private void TouchRemoved(int fingerId)
     {
         if (activeIcons.ContainsKey(fingerId))
         {
@@ -103,6 +116,11 @@ public class FossilSelection : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Creates a new instance of fossil and sets it up on the selected side of the screen.
+    /// </summary>
+    /// <param name="fossil">fossil prefab</param>
+    /// <param name="leftScreen">true if fossil should be on the left, false on the right</param>
     private void selectFossil(Fossil fossil, bool leftScreen)
     {
         Fossil newFossil = Instantiate<Fossil>(fossil);

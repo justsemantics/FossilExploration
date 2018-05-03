@@ -3,33 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// "pulsing" effect on center circle around FossilIcons and PointOfInterestCircles
+/// </summary>
 public class CircleIdle : MonoBehaviour {
 
     [SerializeField]
-    RectTransform outerImage, innerImage;
+    private RectTransform outerImage, innerImage;
 
     [SerializeField]
-    float time, interval, range;
+    [Tooltip("Length in seconds of each pulse")]
+    private float time;
 
     [SerializeField]
-    AnimationCurve animationCurve;
+    [Tooltip("Time in seconds between pulses")]
+    private float interval;
 
-    float timeOfLastPulse;
+    [SerializeField]
+    [Tooltip("Percent increase in max size of circle, i.e. 0.1 = 10% increase")]
+    private float range;
+
+    [SerializeField]
+    [Tooltip("Curve of size and opacity over the course of the pulse")]
+    private AnimationCurve animationCurve;
+
+    private float timeOfLastPulse;
+
+    private Coroutine pulseCoroutine;
 
 	// Use this for initialization
-	void Start () {
+	private void Start () {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	private void Update () {
 		if(Time.time - timeOfLastPulse > interval)
         {
-            StartCoroutine(pulse());
+            pulseCoroutine = StartCoroutine(pulse());
         }
 	}
 
-    IEnumerator pulse()
+    /// <summary>
+    /// Coroutine that pulses the circle
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator pulse()
     {
         timeOfLastPulse = Time.time;
         while(Time.time - timeOfLastPulse < time)

@@ -4,49 +4,63 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Unused in the current build. This was a temporary class that resizes and repositions the FossilIcons in
+/// the central selection area. They are automatically arranged in an evenly-spaced circle, and can be moved
+/// closer together or farther apart, as well as resized.
+/// 
+/// This class is mostly useful for testing on multiple screen resolutions, as the scale of the UI can be different
+/// from one screen to the next.
+/// </summary>
 public class IconResizing : MonoBehaviour {
 
     [SerializeField]
-    RectTransform[] fossilIconBGImages, fossilIconFGImages;
+    private RectTransform[] fossilIconBGImages, fossilIconFGImages;
 
     [SerializeField]
-    FossilIcon[] fossilIcons;
+    private FossilIcon[] fossilIcons;
 
     [SerializeField]
-    GameObject increaseSize, decreaseSize, increaseDistance, decreaseDistance;
+    private GameObject increaseSize, decreaseSize, increaseDistance, decreaseDistance;
 
     [SerializeField]
-    InputStateManager touchManager;
+    private InputStateManager touchManager;
 
     [SerializeField]
-    EventSystem eventSystem;
+    private EventSystem eventSystem;
 
     [SerializeField]
-    GraphicRaycaster raycaster;
+    private GraphicRaycaster raycaster;
 
-    int size = 130;
-    int position = 140;
+    //totally arbitrary, happens to look good on 1920 x 1080
+    private int size = 130;
+    private int position = 140;
 
 	// Use this for initialization
-	void Start () {
+	private void Start () {
         touchManager.OnTouchAdded += TouchAdded;
 
         UpdateIcons();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	private void Update () {
 		
 	}
 
-    void TouchAdded(int fingerId, touchType type)
+    /// <summary>
+    /// Checks if new touches are on any of the control buttons
+    /// </summary>
+    /// <param name="fingerId"></param>
+    /// <param name="type"></param>
+    private void TouchAdded(int fingerId, touchType type)
     {
         PointerEventData eventData = new PointerEventData(eventSystem);
         eventData.position = touchManager.Touches[fingerId].touch.position;
         List<RaycastResult> results = new List<RaycastResult>();
         raycaster.Raycast(eventData, results);
 
-
+        //if the raycast hits a button, increment the corresponding value
         foreach (RaycastResult result in results)
         {
             if (result.gameObject == increaseDistance)
@@ -70,9 +84,9 @@ public class IconResizing : MonoBehaviour {
         UpdateIcons();
     }
 
-    void UpdateIcons()
+    //sets icon positions based on the size and distance settings, then calls Init() to save the new values
+    private void UpdateIcons()
     {
-
         PositionAndSizeIcons(fossilIconBGImages);
         PositionAndSizeIcons(fossilIconFGImages);
 
@@ -86,7 +100,7 @@ public class IconResizing : MonoBehaviour {
     /// Place icons in a regularly spaced circle
     /// </summary>
     /// <param name="icons"></param>
-    void PositionAndSizeIcons(RectTransform[] icons)
+    private void PositionAndSizeIcons(RectTransform[] icons)
     {
         int num = icons.Length;
         float angleIncrement = Mathf.PI * 2 / num;

@@ -3,14 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Tracks touches between frames to allow for gesture control
+/// </summary>
 public class InputStateManager : MonoBehaviour
 {
     public delegate void TouchAddedHandler(int fingerId, touchType type);
     public delegate void TouchRemovedHandler(int fingerId);
 
+    /// <summary>
+    /// Invoked every time someone touches the screen.
+    /// </summary>
     public event TouchAddedHandler OnTouchAdded;
+
+    /// <summary>
+    /// Invoked every time a finger is lifted off the screen
+    /// </summary>
     public event TouchRemovedHandler OnTouchRemoved;
 
+    /// <summary>
+    /// Key: fingerId,
+    /// Value: FossilTouch
+    /// </summary>
     public Dictionary<int, FossilTouch> Touches = new Dictionary<int, FossilTouch>();
 
     [SerializeField]
@@ -54,7 +68,7 @@ public class InputStateManager : MonoBehaviour
             Touches[t.fingerId].touch = t;
         }
 
-        //if the touch is finished this frame but we are tracking it
+        //if the touch is finished this frame but we are tracking it, remove the touch
         if ((t.phase == TouchPhase.Ended || t.phase == TouchPhase.Canceled) && Touches.ContainsKey(t.fingerId))
         {
             Touches.Remove(t.fingerId);
@@ -65,6 +79,7 @@ public class InputStateManager : MonoBehaviour
         }
     }
 
+    //TODO: these values should NOT be hard coded
     private touchType DetermineTouchType(Touch t)
     {
         if(t.position.x < Screen.width * 0.375)
