@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class InputStateManager : MonoBehaviour
 {
     public delegate void TouchAddedHandler(int fingerId, touchType type);
-
     public delegate void TouchRemovedHandler(int fingerId);
 
     public event TouchAddedHandler OnTouchAdded;
@@ -35,6 +34,10 @@ public class InputStateManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Adds new Touches, removes ended / canceled Touches, and updates existing Touches
+    /// </summary>
+    /// <param name="t"></param>
     private void HandleTouch(Touch t)
     {
         //if this is a new touch
@@ -64,11 +67,11 @@ public class InputStateManager : MonoBehaviour
 
     private touchType DetermineTouchType(Touch t)
     {
-        if(t.position.x < Screen.width * 0.4)
+        if(t.position.x < Screen.width * 0.375)
         {
             return touchType.left;
         }
-        else if(t.position.x > Screen.width * 0.6)
+        else if(t.position.x > Screen.width * 0.625)
         {
             return touchType.right;
         }
@@ -79,7 +82,9 @@ public class InputStateManager : MonoBehaviour
     }
 }
 
-
+/// <summary>
+/// Keeps track of Touches and their types
+/// </summary>
 public class FossilTouch
 {
     public Touch touch;
@@ -92,6 +97,9 @@ public class FossilTouch
     }
 }
 
+/// <summary>
+/// Identifies what region of the screen a touch began in
+/// </summary>
 public enum touchType
 {
     left,

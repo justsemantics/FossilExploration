@@ -1,0 +1,247 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1424508528776250}
+  m_IsPrefabParent: 1
+--- !u!1 &1199568913429692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4286725325403570}
+  - component: {fileID: 114244973764956576}
+  m_Layer: 0
+  m_Name: POI(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: -4087464717476244675, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1267996097079064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4546944813038360}
+  - component: {fileID: 114987280044995182}
+  m_Layer: 0
+  m_Name: POI(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: -4087464717476244675, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1424508528776250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4953248191210038}
+  - component: {fileID: 114651034237767260}
+  m_Layer: 0
+  m_Name: Fossil 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1693416227563968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4914498616935776}
+  - component: {fileID: 33746584776669012}
+  - component: {fileID: 23604903715948942}
+  - component: {fileID: 64791696165523626}
+  m_Layer: 0
+  m_Name: fossil 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4286725325403570
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1199568913429692}
+  m_LocalRotation: {x: -0, y: -0.6911845, z: -0, w: 0.7226783}
+  m_LocalPosition: {x: 0.2592577, y: -0.2269265, z: -0.101868585}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4953248191210038}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: -87.448006, z: 0}
+--- !u!4 &4546944813038360
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1267996097079064}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.2779869, y: 0.5248423, z: -0.05477418}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4953248191210038}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4914498616935776
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1693416227563968}
+  m_LocalRotation: {x: 0.000000081460335, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.6946895, y: 0.6946894, z: 0.6946894}
+  m_Children: []
+  m_Father: {fileID: 4953248191210038}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4953248191210038
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1424508528776250}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4914498616935776}
+  - {fileID: 4286725325403570}
+  - {fileID: 4546944813038360}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23604903715948942
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1693416227563968}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 927ea1b6bd1073f46b3333c98bdabba8, type: 3}
+  - {fileID: 2100002, guid: 927ea1b6bd1073f46b3333c98bdabba8, type: 3}
+  - {fileID: 2100004, guid: 927ea1b6bd1073f46b3333c98bdabba8, type: 3}
+  - {fileID: 2100006, guid: 927ea1b6bd1073f46b3333c98bdabba8, type: 3}
+  - {fileID: 2100008, guid: 927ea1b6bd1073f46b3333c98bdabba8, type: 3}
+  - {fileID: 2100010, guid: 927ea1b6bd1073f46b3333c98bdabba8, type: 3}
+  - {fileID: 2100012, guid: 927ea1b6bd1073f46b3333c98bdabba8, type: 3}
+  - {fileID: 2100014, guid: 927ea1b6bd1073f46b3333c98bdabba8, type: 3}
+  - {fileID: 2100016, guid: 927ea1b6bd1073f46b3333c98bdabba8, type: 3}
+  - {fileID: 2100018, guid: 927ea1b6bd1073f46b3333c98bdabba8, type: 3}
+  - {fileID: 2100020, guid: 927ea1b6bd1073f46b3333c98bdabba8, type: 3}
+  - {fileID: 2100022, guid: 927ea1b6bd1073f46b3333c98bdabba8, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &33746584776669012
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1693416227563968}
+  m_Mesh: {fileID: 4300000, guid: 927ea1b6bd1073f46b3333c98bdabba8, type: 3}
+--- !u!64 &64791696165523626
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1693416227563968}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 927ea1b6bd1073f46b3333c98bdabba8, type: 3}
+--- !u!114 &114244973764956576
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1199568913429692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2666eae23afbbc24aa8ebc1f039745e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: Base
+  content: This bit looks like it connects to other vertebrae. Imagine a long chain
+    of identical looking fossils.
+  infoPanelLocation: {x: 250, y: 300}
+  Info: {fileID: 0}
+  Rotation: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &114651034237767260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1424508528776250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d9e68c0ba5e99b43b649735d56458af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: 
+  content: 
+--- !u!114 &114987280044995182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1267996097079064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2666eae23afbbc24aa8ebc1f039745e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: Fin
+  content: Muscles might grab on to this thin part for better torque, or maybe it
+    sticks out of the back like a weapon.
+  infoPanelLocation: {x: 50, y: 750}
+  Info: {fileID: 0}
+  Rotation: {x: 0, y: 0, z: 0, w: 0}

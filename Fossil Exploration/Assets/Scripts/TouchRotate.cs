@@ -29,7 +29,6 @@ public class TouchRotate : MonoBehaviour {
 
         touchManager.OnTouchAdded += TouchAdded;
         touchManager.OnTouchRemoved += TouchRemoved;
-
 	}
 	
 	// Update is called once per frame
@@ -102,8 +101,11 @@ public class TouchRotate : MonoBehaviour {
             oldRotation = oldRotation * rotDecay;
         }
 
-        CurrentFossil.transform.RotateAround(transform.position, Vector3.up, -newRotation.x - oldRotation.x);
-        CurrentFossil.transform.RotateAround(transform.position, Vector3.right, newRotation.y + oldRotation.y);
+        if (CurrentFossil != null)
+        {
+            CurrentFossil.transform.RotateAround(transform.position, Vector3.up, -newRotation.x - oldRotation.x);
+            CurrentFossil.transform.RotateAround(transform.position, Vector3.right, newRotation.y + oldRotation.y);
+        }
 
         if (newRotation.magnitude > rotMinThreshold)
         {
@@ -193,6 +195,21 @@ public class TouchRotate : MonoBehaviour {
                 // Clamp the field of view to make sure it's between 0 and 180.
                 cam.fieldOfView = Mathf.Clamp(cam.fieldOfView, 20, 120);
             }
+
+
+            ////////////////////////////////////
+            //Stuff for rotating gesture
+            ////////////////////////////////////
+            if (CurrentFossil != null)
+            {
+                float angle, prevAngle;
+
+                angle = angleBetweenFingerPositions(touchZero.position, touchOne.position);
+                prevAngle = angleBetweenFingerPositions(touchZeroPrevPos, touchOnePrevPos);
+
+                float angleDelta = (angle - prevAngle) % 360;
+                CurrentFossil.transform.RotateAround(transform.position, Vector3.forward, angleDelta);
+            }
         }
         else
         {
@@ -202,23 +219,42 @@ public class TouchRotate : MonoBehaviour {
         }
     }
 
+    float angleBetweenFingerPositions(Vector2 posZero, Vector2 posOne)
+    {
+        float a = posOne.x - posZero.x;
+        float o = posOne.y - posZero.y;
+        float h = Vector2.Distance(posOne, posZero);
+        float angle = Mathf.Asin(o / h) * Mathf.Rad2Deg;
+
+        if(a <= 0)
+        {
+            angle = 180 - angle;
+        }
+        else if(o <= 0)
+        {
+            angle = 360 + angle;
+        }
+
+        return angle;
+    }
+
     public void RotateToPOI(PointOfInterest POI)
+    {
+        CancelRotateToPOI();
+        rotationCoroutine = StartCoroutine(RotateToPOICoroutine(POI, 1));
+    }
+
+    IEnumerator RotateToPOICoroutine(PointOfInterest POI, float time)
     {
         Quaternion initialRotation = CurrentFossil.transform.rotation;
         Quaternion targetRotation = Quaternion.identity * POI.Rotation;
-
-        CancelRotateToPOI();
-        rotationCoroutine = StartCoroutine(RotateToPOICoroutine(initialRotation, targetRotation, 1));
-    }
-
-    IEnumerator RotateToPOICoroutine(Quaternion initialRotation, Quaternion targetRotation, float time)
-    {
         float timeStarted = Time.time;
-
         while (Time.time - timeStarted < time)
         {
             Quaternion rotation = Quaternion.Slerp(initialRotation, targetRotation, (Time.time - timeStarted) / time);
+            Vector3 position = Vector3.Lerp(CurrentFossil.transform.position, (CurrentFossil.transform.position - POI.transform.position) + transform.position, 0.1f);
             CurrentFossil.transform.rotation = rotation;
+            CurrentFossil.transform.position = position;
             yield return null;
         }
     }

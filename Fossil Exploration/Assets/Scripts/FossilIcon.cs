@@ -48,27 +48,27 @@ public class FossilIcon : MonoBehaviour {
     public void Return(bool lerp = false)
     {
         rectTransform.anchoredPosition = initialPosition;
-        Destroy(spareIcon.gameObject);
+        //Destroy(spareIcon.gameObject);
     }
 
     public void Pickup()
     {
-        if(spareIcon == null)
-        {
-            spareIcon = Instantiate(this);
+        //if(spareIcon == null)
+        //{
+        //    spareIcon = Instantiate(this);
 
-            spareIcon.FadeIn();
-        }
+        //    spareIcon.FadeIn();
+        //}
     }
 
     public void FadeIn()
     {
-        StartCoroutine(fadeInAfterSeconds(1, 1));
+        //StartCoroutine(fadeInAfterSeconds(1, 1));
     }
 
     private void OnDestroy()
     {
-        Destroy(spareIcon.gameObject);
+        //Destroy(spareIcon.gameObject);
     }
 
     IEnumerator fadeInAfterSeconds(float time, float fadeTime)

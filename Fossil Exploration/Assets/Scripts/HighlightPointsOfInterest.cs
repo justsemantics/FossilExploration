@@ -30,22 +30,35 @@ public class HighlightPointsOfInterest : MonoBehaviour {
     List<InfoText> currentInfoTexts = new List<InfoText>();
     List<PointOfInterestCircle> currentPOICircles = new List<PointOfInterestCircle>();
 
+    bool shouldRefresh = false;
+
 	// Use this for initialization
 	void Start () {
-       
 	}
 
-    public void SelectFossil(Fossil fossil)
+    /// <summary>
+    /// Makes sure that Refresh is only called after the new Fossil is done being set up
+    /// </summary>
+    void LateUpdate()
     {
-        currentFossil = fossil;
+        if (shouldRefresh)
+        {
+            Refresh();
+        }
+    }
 
-        foreach(InfoText i in currentInfoTexts)
+    /// <summary>
+    /// Deletes old InfoTexts and PointOfInterestCircles and makes new ones based on the currentFossil
+    /// </summary>
+    void Refresh()
+    {
+        foreach (InfoText i in currentInfoTexts)
         {
             Destroy(i.gameObject);
         }
         currentInfoTexts.Clear();
 
-        foreach(PointOfInterestCircle c in currentPOICircles)
+        foreach (PointOfInterestCircle c in currentPOICircles)
         {
             Destroy(c.gameObject);
         }
@@ -59,6 +72,7 @@ public class HighlightPointsOfInterest : MonoBehaviour {
             i.ContentTextString = POI.Content;
             i.POI = POI;
             i.positionController = touchRotate;
+            i.Position = POI.InfoPanelLocation;
 
             currentInfoTexts.Add(i);
 
@@ -70,6 +84,15 @@ public class HighlightPointsOfInterest : MonoBehaviour {
 
             currentPOICircles.Add(c);
         }
+
+        shouldRefresh = false;
+    }
+
+    public void SelectFossil(Fossil fossil)
+    {
+        currentFossil = fossil;
+        shouldRefresh = true;
+        
     }
 	
 	// Update is called once per frame
