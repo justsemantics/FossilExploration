@@ -7,39 +7,38 @@ using UnityEngine.UI;
 public class HighlightPointsOfInterest : MonoBehaviour {
 
     [SerializeField]
-    PointOfInterestCircle pointOfInterestCirclePrefab;
+    private PointOfInterestCircle pointOfInterestCirclePrefab;
 
     [SerializeField]
-    InfoText infoTextPrefab;
+    private InfoText infoTextPrefab;
+
+    private Fossil currentFossil;
 
     [SerializeField]
-    Fossil currentFossil;
+    private float sensitivity = 0.01f;
 
     [SerializeField]
-    float sensitivity;
+    private RectTransform circlePanel, infoTextPanel;
 
     [SerializeField]
-    RectTransform circlePanel, infoTextPanel;
+    private TouchRotate touchRotate;
 
     [SerializeField]
-    TouchRotate touchRotate;
+    private Camera cam;
 
-    [SerializeField]
-    Camera cam;
+    private List<InfoText> currentInfoTexts = new List<InfoText>();
+    private List<PointOfInterestCircle> currentPOICircles = new List<PointOfInterestCircle>();
 
-    List<InfoText> currentInfoTexts = new List<InfoText>();
-    List<PointOfInterestCircle> currentPOICircles = new List<PointOfInterestCircle>();
-
-    bool shouldRefresh = false;
+    private bool shouldRefresh = false;
 
 	// Use this for initialization
-	void Start () {
+	private void Start () {
 	}
 
     /// <summary>
     /// Makes sure that Refresh is only called after the new Fossil is done being set up
     /// </summary>
-    void LateUpdate()
+    private void LateUpdate()
     {
         if (shouldRefresh)
         {
@@ -48,10 +47,12 @@ public class HighlightPointsOfInterest : MonoBehaviour {
     }
 
     /// <summary>
-    /// Deletes old InfoTexts and PointOfInterestCircles and makes new ones based on the currentFossil
+    /// Don't call this directly. Instead, set the shouldRefresh flag and let LateUpdate handle it.
+    /// Deletes old InfoTexts and PointOfInterestCircles and makes new ones based on the currentFossil.
     /// </summary>
-    void Refresh()
+    private void Refresh()
     {
+        //Delete old stuff, clear out lists
         foreach (InfoText i in currentInfoTexts)
         {
             Destroy(i.gameObject);
@@ -64,6 +65,7 @@ public class HighlightPointsOfInterest : MonoBehaviour {
         }
         currentPOICircles.Clear();
 
+        //Make new stuff
         foreach (PointOfInterest POI in currentFossil.PointsOfInterest)
         {
             InfoText i = Instantiate<InfoText>(infoTextPrefab, infoTextPanel, false);
@@ -81,6 +83,7 @@ public class HighlightPointsOfInterest : MonoBehaviour {
             c.POI = POI;
             c.cam = cam;
             c.Info = i;
+            c.sensitivity = sensitivity;
 
             currentPOICircles.Add(c);
         }
@@ -91,11 +94,6 @@ public class HighlightPointsOfInterest : MonoBehaviour {
     public void SelectFossil(Fossil fossil)
     {
         currentFossil = fossil;
-        shouldRefresh = true;
-        
+        shouldRefresh = true;      
     }
-	
-	// Update is called once per frame
-	void Update () {
-	}
 }

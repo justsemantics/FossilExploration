@@ -1349,8 +1349,7 @@ MonoBehaviour:
     type: 2}
   infoTextPrefab: {fileID: 114977475687920498, guid: a119869b3a73ae14abbc483e7db4f9af,
     type: 2}
-  currentFossil: {fileID: 0}
-  sensitivity: 0
+  sensitivity: 0.01
   circlePanel: {fileID: 2055462695}
   infoTextPanel: {fileID: 2055462695}
   touchRotate: {fileID: 511291750}
@@ -2219,8 +2218,7 @@ MonoBehaviour:
     type: 2}
   infoTextPrefab: {fileID: 114977475687920498, guid: a119869b3a73ae14abbc483e7db4f9af,
     type: 2}
-  currentFossil: {fileID: 0}
-  sensitivity: 0
+  sensitivity: 0.01
   circlePanel: {fileID: 1253519920}
   infoTextPanel: {fileID: 1253519920}
   touchRotate: {fileID: 1336963727}
