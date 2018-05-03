@@ -96,6 +96,9 @@ public class InfoText : MonoBehaviour, IPointerDownHandler {
         contentTextRectTransform = contentText.GetComponent<RectTransform>();
         animator = GetComponent<Animator>();
         shouldUpdateHeights = true;
+
+        //InfoTexts should appear on top of other UI elements
+        transform.SetAsLastSibling();
 	}
 
 

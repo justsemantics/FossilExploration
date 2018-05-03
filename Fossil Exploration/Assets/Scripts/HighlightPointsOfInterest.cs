@@ -12,11 +12,10 @@ public class HighlightPointsOfInterest : MonoBehaviour {
     [SerializeField]
     InfoText infoTextPrefab;
 
-    [SerializeField]
     Fossil currentFossil;
 
     [SerializeField]
-    float sensitivity;
+    float sensitivity = 0.01f;
 
     [SerializeField]
     RectTransform circlePanel, infoTextPanel;
@@ -48,10 +47,12 @@ public class HighlightPointsOfInterest : MonoBehaviour {
     }
 
     /// <summary>
-    /// Deletes old InfoTexts and PointOfInterestCircles and makes new ones based on the currentFossil
+    /// Don't call this directly. Instead, set the shouldRefresh flag and let LateUpdate handle it.
+    /// Deletes old InfoTexts and PointOfInterestCircles and makes new ones based on the currentFossil.
     /// </summary>
     void Refresh()
     {
+        //Delete old stuff, clear out lists
         foreach (InfoText i in currentInfoTexts)
         {
             Destroy(i.gameObject);
@@ -64,6 +65,7 @@ public class HighlightPointsOfInterest : MonoBehaviour {
         }
         currentPOICircles.Clear();
 
+        //Make new stuff
         foreach (PointOfInterest POI in currentFossil.PointsOfInterest)
         {
             InfoText i = Instantiate<InfoText>(infoTextPrefab, infoTextPanel, false);
@@ -81,6 +83,7 @@ public class HighlightPointsOfInterest : MonoBehaviour {
             c.POI = POI;
             c.cam = cam;
             c.Info = i;
+            c.sensitivity = sensitivity;
 
             currentPOICircles.Add(c);
         }
@@ -91,8 +94,7 @@ public class HighlightPointsOfInterest : MonoBehaviour {
     public void SelectFossil(Fossil fossil)
     {
         currentFossil = fossil;
-        shouldRefresh = true;
-        
+        shouldRefresh = true;      
     }
 	
 	// Update is called once per frame

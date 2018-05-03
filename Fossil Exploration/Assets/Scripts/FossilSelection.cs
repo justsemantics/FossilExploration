@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+
+
 public class FossilSelection : MonoBehaviour {
 
     [SerializeField]
@@ -38,12 +40,6 @@ public class FossilSelection : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //leftScreenControl.SelectFossil(leftScreenInitialFossilSelection);
-        //rightScreenControl.SelectFossil(rightScreenInitialFossilSelection);
-
-        //leftScreenInitialFossilSelection.Setup(leftScreenFossilLocation);
-        //rightScreenInitialFossilSelection.Setup(rightScreenFossilLocation);
-
         touchManager.OnTouchAdded += TouchAdded;
         touchManager.OnTouchRemoved += TouchRemoved;
 	}
